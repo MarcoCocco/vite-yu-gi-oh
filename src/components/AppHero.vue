@@ -4,6 +4,12 @@ export default {
         return {
 
         }
+    },
+
+    methods: {
+        scrollPageDown() {
+            window.scrollTo(0, document.body.scrollHeight);
+        }
     }
 }
 </script>
@@ -12,10 +18,9 @@ export default {
     <div class="bg-hero">
         <div class="gradient-color">
             <div class="bg-image">
-
+                <button id="scroll-bottom-button" @click="scrollPageDown()">Vai al Catalogo</button>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -39,6 +44,24 @@ export default {
             border-bottom-right-radius: 30%;
             border-top-left-radius: 30%;
             background-image: url('/images/jumbo.png');
+
+            #scroll-bottom-button {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 10px 20px;
+                background-color: darken($color: red, $amount: 40%);
+                color: #fff;
+                border: none;
+                border: 1px solid red;
+                border-radius: 50px;
+                cursor: pointer;
+                opacity: .5;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
         }
     }
 
