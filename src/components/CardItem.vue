@@ -38,14 +38,25 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 
-    img {
-        width: 100%;
+    .card-image {
+        margin-bottom: 15px;
+        box-shadow: 0px 10px 15px 0px #000000d7;
+
+        img {
+            display: block;
+            width: 100%;
+        }
     }
 
-    .title-card {
-        font-size: 1.4em;
+    .title-card, .card-type{
         text-align: center;
+    }
+
+    .card-type {
+        font-size: .8em;
+        color: gray;
     }
 }
 </style>

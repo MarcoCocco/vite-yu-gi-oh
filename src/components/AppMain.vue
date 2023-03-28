@@ -10,6 +10,8 @@ export default {
 
             store,
         }
+
+        hidden: false;
     },
 
     components: { CardItem },
@@ -19,6 +21,7 @@ export default {
         scrollPageUp() {
 
             window.scrollTo(0, 0);
+
         }
     },
 
@@ -65,6 +68,7 @@ export default {
     border-radius: 50px;
     cursor: pointer;
     opacity: .5;
+    transition: all .6s;
 
     &:hover {
         opacity: 1;

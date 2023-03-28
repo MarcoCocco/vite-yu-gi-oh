@@ -57,6 +57,7 @@ export default {
                 border-radius: 50px;
                 cursor: pointer;
                 opacity: .5;
+                transition: all .6s;
 
                 &:hover {
                     opacity: 1;
