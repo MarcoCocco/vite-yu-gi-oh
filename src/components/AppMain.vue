@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import { store } from '../store.js';
+import AppLoader from './AppLoader.vue';
 import AppSearch from './AppSearch.vue';
 import CardItem from './CardItem.vue';
 
@@ -13,7 +14,16 @@ export default {
         }
     },
 
-    components: { CardItem, AppSearch },
+    components: { CardItem, AppSearch, AppLoader },
+
+    created() {
+
+        axios.get(this.store.APIcall).then((res) => {
+
+            this.store.cards = res.data.data;
+
+        });
+    },
 
     methods: {
 
@@ -21,23 +31,45 @@ export default {
 
             window.scrollTo(0, 0);
 
+        },
+
+        search() {
+
+            let apiNewString = this.store.APIcall
+
+            if (this.store.cardName != "" || this.store.cardType != "") {
+                apiNewString += "&";
+
+                if (this.store.cardName != "") {
+
+                    apiNewString += `fname=${this.store.cardName}`;
+
+                    if (this.store.cardType != "") {
+                        apiNewString += "&";
+                    }
+                }
+
+                if (this.store.cardType != "") {
+                    apiNewString += `frameType=${this.store.cardType}`;
+                }
+            }
+
+            axios.get(apiNewString).then((res) => {
+
+                this.store.cards = res.data.data;
+
+            });
+
         }
     },
 
-    created() {
-
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=50&offset=0').then((res) => {
-
-            this.store.cards = res.data.data;
-
-        });
-    }
 }
 </script>
 
 <template>
-    <AppSearch></AppSearch>
+    <AppSearch @searchCard="search()"></AppSearch>
     <div class="card-list-container">
+        <AppLoader v-if="!store.cards.length > 0"></AppLoader>
 
         <div class="card-list">
             <CardItem v-for="card in store.cards" :card="card"></CardItem>
@@ -49,6 +81,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-list-container {
+    position: relative;
     margin-top: 115px;
     width: 100%;
     height: calc(100vh - 115px);

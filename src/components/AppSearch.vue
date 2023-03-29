@@ -15,17 +15,17 @@ export default {
     <div class="container">
         <div class="search-options">
             <div class="type-search">
-                <input id="search-bar" type="text" placeholder="Inserisci parola chiave">
-                <select name="type" id="type">
+                <input v-model="store.cardName" id="search-bar" type="text" placeholder="Inserisci parola chiave" @keyup.enter="$emit('searchCard')">
+                <select v-model="store.cardType" name="type" id="type">
                     <option value="">Seleziona tipo</option>
-                    <option value="Normal Monster">Mostro Normale</option>
-                    <option value="Effect Monster">Mostro Effetto</option>
-                    <option value="Spell Card">Magia</option>
-                    <option value="Trap Card">Trappola</option>
+                    <option value="normal">Mostro Normale</option>
+                    <option value="effect">Mostro Effetto</option>
+                    <option value="spell">Magia</option>
+                    <option value="trap">Trappola</option>
                 </select>
             </div>
             <div class="search-button">
-                <button id="search-btn">Cerca</button>
+                <button @click="$emit('searchCard')" id="search-btn">Cerca</button>
             </div>
         </div>
     </div>
@@ -34,6 +34,7 @@ export default {
 <style lang="scss" scoped>
 .container {
     position: relative;
+    z-index: 1;
 
     .search-options {
         position: absolute;
