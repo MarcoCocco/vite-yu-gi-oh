@@ -16,8 +16,8 @@ export default {
         <div class="search-options">
             <div class="type-search">
                 <input v-model="store.cardName" id="search-bar" type="text" placeholder="Inserisci parola chiave" @keyup.enter="$emit('searchCard')">
-                <select v-model="store.cardType" name="type" id="type">
-                    <option value=""></option>
+                <select v-model="store.cardType" name="card-type" id="card-type">
+                    <option value="">Seleziona tipo</option>
                     <option value="Normal Monster">Mostro Normale</option>
                     <option value="Effect Monster">Mostro Effetto</option>
                     <option value="Fusion Monster">Fusione</option>
@@ -71,7 +71,7 @@ export default {
                 border: 1px solid #88bfd8;
             }
 
-            #type {
+            #card-type {
                 padding: 5px 10px;
                 border-radius: 50px;
                 border: none;

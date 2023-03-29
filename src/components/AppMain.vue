@@ -61,8 +61,11 @@ export default {
             }).catch((error) => {
 
                 alert('Non esistono carte che contengono questo testo.');
-               
+
             });
+
+            store.cardName = '',
+            store.cardType = ''
 
         }
     },
