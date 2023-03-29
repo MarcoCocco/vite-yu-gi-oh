@@ -36,8 +36,9 @@ export default {
 </script>
 
 <template>
+    <AppSearch></AppSearch>
     <div class="card-list-container">
-        <AppSearch></AppSearch>
+
         <div class="card-list">
             <CardItem v-for="card in store.cards" :card="card"></CardItem>
         </div>
@@ -48,8 +49,9 @@ export default {
 
 <style lang="scss" scoped>
 .card-list-container {
+    margin-top: 115px;
     width: 100%;
-    height: 100vh;
+    height: calc(100vh - 115px);
     overflow: auto;
 
     .card-list {

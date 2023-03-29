@@ -47,6 +47,7 @@ export default {
 
             #scroll-bottom-button {
                 position: fixed;
+                z-index: 2;
                 top: 20px;
                 right: 20px;
                 padding: 10px 20px;
