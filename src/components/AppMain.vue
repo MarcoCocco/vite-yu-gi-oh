@@ -50,7 +50,7 @@ export default {
                 }
 
                 if (this.store.cardType != "") {
-                    apiNewString += `frameType=${this.store.cardType}`;
+                    apiNewString += `type=${this.store.cardType}`;
                 }
             }
 

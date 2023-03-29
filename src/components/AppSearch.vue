@@ -17,11 +17,15 @@ export default {
             <div class="type-search">
                 <input v-model="store.cardName" id="search-bar" type="text" placeholder="Inserisci parola chiave" @keyup.enter="$emit('searchCard')">
                 <select v-model="store.cardType" name="type" id="type">
-                    <option value="">Seleziona tipo</option>
-                    <option value="normal">Mostro Normale</option>
-                    <option value="effect">Mostro Effetto</option>
-                    <option value="spell">Magia</option>
-                    <option value="trap">Trappola</option>
+                    <option value=""></option>
+                    <option value="Normal Monster">Mostro Normale</option>
+                    <option value="Effect Monster">Mostro Effetto</option>
+                    <option value="Fusion Monster">Fusione</option>
+                    <option value="Synchro Monster">Synchro</option>
+                    <option value="XYZ Monster">XYZ</option>
+                    <option value="Link Monster">Link</option>
+                    <option value="Spell Card">Magia</option>
+                    <option value="Trap Card">Trappola</option>
                 </select>
             </div>
             <div class="search-button">
