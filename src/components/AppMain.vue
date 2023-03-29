@@ -58,6 +58,10 @@ export default {
 
                 this.store.cards = res.data.data;
 
+            }).catch((error) => {
+
+                alert('Non esistono carte che contengono questo testo.');
+               
             });
 
         }
