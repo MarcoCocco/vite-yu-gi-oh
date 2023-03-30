@@ -21,6 +21,7 @@ export default {
         axios.get(this.store.APIcall).then((res) => {
 
             this.store.cards = res.data.data;
+            this.store.isLoading = false;
 
         });
     },
@@ -35,6 +36,7 @@ export default {
 
         search() {
 
+            this.store.isLoading = true;
             let apiNewString = this.store.APIcall
 
             if (this.store.cardName != "" || this.store.cardType != "") {
@@ -57,6 +59,7 @@ export default {
             axios.get(apiNewString).then((res) => {
 
                 this.store.cards = res.data.data;
+                this.store.isLoading = false;
 
             }).catch((error) => {
 
@@ -76,7 +79,7 @@ export default {
 <template>
     <AppSearch @searchCard="search()"></AppSearch>
     <div class="card-list-container">
-        <AppLoader v-if="!store.cards.length > 0"></AppLoader>
+        <AppLoader v-if="store.isLoading"></AppLoader>
 
         <div class="card-list">
             <CardItem v-for="card in store.cards" :card="card"></CardItem>
