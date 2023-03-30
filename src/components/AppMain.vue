@@ -63,12 +63,16 @@ export default {
 
             }).catch((error) => {
 
-                alert('Non esistono carte che contengono questo testo.');
-
+                if (error.response.status === 400) {
+                    this.store.cards = [];
+                    this.store.isLoading = false;
+                } else {
+                    alert("Error" + error.response.statusText);
+                }
             });
 
             store.cardName = '',
-            store.cardType = ''
+                store.cardType = ''
 
         }
     },
@@ -81,8 +85,11 @@ export default {
     <div class="card-list-container">
         <AppLoader v-if="store.isLoading"></AppLoader>
 
-        <div class="card-list">
+        <div v-if="store.cards.length > 0 && !store.isLoading" class="card-list">
             <CardItem v-for="card in store.cards" :card="card"></CardItem>
+        </div>
+        <div id="error-message" v-else>
+            <p>Non è stata trovata nessuna carta</p>
         </div>
 
         <button id="scroll-top-button" @click="scrollPageUp()">Torna all'inizio</button>
@@ -103,6 +110,12 @@ export default {
         flex-wrap: wrap;
         gap: 30px;
         justify-content: center;
+    }
+
+    #error-message {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 1.4em;
     }
 
     #scroll-top-button {
